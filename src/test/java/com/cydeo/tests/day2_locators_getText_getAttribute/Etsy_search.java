@@ -8,16 +8,25 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Etsy_search {
     public static void main(String[] args) {
+
+        //  1. Open Chrome browser
         WebDriverManager.chromedriver().setup();
-        WebDriver driver= new ChromeDriver();
+        WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
+
+        //  2. Go to https://www.etsy.com
         driver.get("https://etsy.com");
 
-        driver.findElement(By.name("search_query")).sendKeys("wooden Spoon"+ Keys.ENTER);
+        //3. Search for “wooden spoon”
+        driver.findElement(By.name("search_query")).sendKeys("wooden Spoon" + Keys.ENTER);
 
-        System.out.println("title: "+ driver.getTitle());
+        //4. Verify title:
+        //Expected: “Wooden spoon | Etsy”
 
-
-
+        String exceptedTitle= "Wooden spoon | Etsy";
+        String actualTitle= driver.getTitle();
+        String result = (exceptedTitle.equals(actualTitle)) ? "Title passed" : "title Failed";
+        System.out.println(result);
+        driver.close();
     }
 }
