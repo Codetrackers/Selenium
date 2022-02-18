@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class TC4 {
+public class TC5 {
     WebDriver driver;
 
     @BeforeMethod
@@ -41,6 +41,21 @@ public class TC4 {
         WebElement stateSelector = driver.findElement(By.xpath("//select[@id='state']"));
         Select stateDropDown = new Select(stateSelector);
         stateDropDown.selectByValue("IL");
+     /*   List<String> states = new ArrayList<>();
+        states.add(stateSelector.getText());
+        int i=0;
+        for (String each : states) {
+            i++;
+            if(each.equals("Virginia")){
+
+                break;
+            }
+            System.out.println(i);
+        }
+
+
+
+*/
         stateDropDown.selectByIndex(47);
         stateDropDown.selectByVisibleText("California");
 
