@@ -9,6 +9,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TC5 {
@@ -36,27 +38,27 @@ public class TC5 {
 
     @Test
 
-    public void stateVerification() {
+    public void stateVerification() throws InterruptedException {
 
         WebElement stateSelector = driver.findElement(By.xpath("//select[@id='state']"));
         Select stateDropDown = new Select(stateSelector);
         stateDropDown.selectByValue("IL");
-     /*   List<String> states = new ArrayList<>();
-        states.add(stateSelector.getText());
-        int i=0;
-        for (String each : states) {
-            i++;
-            if(each.equals("Virginia")){
+        Thread.sleep(1000);
+        List<WebElement> states = new ArrayList<>(stateDropDown.getOptions());
+        int i = 0;
+        for (WebElement each : states) {
 
+            if(each.getText().equals("Virginia")){
                 break;
             }
-            System.out.println(i);
+            i++;
         }
+        System.out.println(i);
 
 
+        stateDropDown.selectByIndex(i);
 
-*/
-        stateDropDown.selectByIndex(47);
+        Thread.sleep(1000);
         stateDropDown.selectByVisibleText("California");
 
         String expected= "California";

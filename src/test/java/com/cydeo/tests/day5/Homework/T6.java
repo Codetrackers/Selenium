@@ -48,7 +48,7 @@ public class T6 {
 
         WebElement day = driver.findElement(By.xpath("//select[@id='day']"));
         Select daySelect = new Select(day);
-        monthSelect.selectByIndex(0);
+        daySelect.selectByIndex(0);
 
     }
 
